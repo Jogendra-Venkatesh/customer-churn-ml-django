@@ -18,6 +18,7 @@ X, y = make_classification(
 model = RandomForestClassifier(random_state=42)
 model.fit(X, y)
 
+
 # Save the trained model
 model_path = Path(__file__).resolve().parent / "churn_model.joblib"
 joblib.dump(model, model_path)
