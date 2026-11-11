@@ -50,3 +50,9 @@ jobs:
           context: .
           push: true
           tags: jogendravenkatesh/customer-churn-ml-django:latest   
+          
+      - name: Trigger Render deployment
+        if: github.event_name == 'push'
+        run: curl -X POST "$RENDER_DEPLOY_HOOK_URL"
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}    
